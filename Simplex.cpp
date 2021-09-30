@@ -205,15 +205,15 @@ void simplex_method()
     else
     {
         std::cout << "\nSolution:\n";
-        std::cout << "F  = " << s_matrix[3][0] * (-1) << "\n";
-        for (int i = 0; i < 3; ++i)
+        std::cout << "F  = " << s_matrix[matrix_length - 1][0] * (-1) << "\n";
+        for (int i = 0; i < basis_size; ++i)
         {
-            if (basis[i] <= 3)
+            if (basis[i] <= basis_size)
                 std::cout << "x" << basis[i] << " = 0\n";
         }
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < basis_size; ++i)
         {
-            if (free[i] <= 3)
+            if (free[i] <= basis_size)
                 std::cout << "x" << free[i] << " = " << s_matrix[i][0] << "\n";
         }
     }
