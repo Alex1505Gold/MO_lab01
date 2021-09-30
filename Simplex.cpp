@@ -1,14 +1,16 @@
-﻿#include <iostream>
+﻿#include <fstream>
 #include <iomanip>
-#include <fstream>
+#include <iostream>
 
-int main()
+void simplex_method()
 {
+    const unsigned short int basis_size = 3;
     const unsigned short int matrix_length = 4;
     const unsigned short int matrix_width = 4;
-    const unsigned short int basis_size = 3;
+    
     double s_matrix[matrix_length][matrix_width];
     double ad_matrix[matrix_length][matrix_width];
+
     int basis[3] = { 1 , 2, 3 };
     int free[3] = { 4, 5, 6 };
     double min = -1;
@@ -16,7 +18,7 @@ int main()
     std::ifstream in("input.txt");
     for (int i = 0; i < matrix_width - 1; ++i)
         in >> s_matrix[3][i + 1];
-    
+
     for (int i = 0; i < matrix_length - 1; ++i)
         for (int j = 0; j < matrix_width - 1; ++j)
         {
@@ -33,7 +35,7 @@ int main()
     std::cout << "\n";
     for (int i = 0; i < matrix_length; ++i)
     {
-        if (i <=2) std::cout << "x" << free[i] << "  ";
+        if (i <= 2) std::cout << "x" << free[i] << "  ";
         else std::cout << "F   ";
         for (int j = 0; j < matrix_width; ++j)
         {
@@ -211,10 +213,15 @@ int main()
         }
         for (int i = 0; i < 3; ++i)
         {
-            if (free[i] <= 3) 
+            if (free[i] <= 3)
                 std::cout << "x" << free[i] << " = " << s_matrix[i][0] << "\n";
         }
     }
+}
+
+int main()
+{
+    simplex_method();
     return 0;
 }
 
