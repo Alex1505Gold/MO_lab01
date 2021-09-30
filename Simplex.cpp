@@ -95,6 +95,7 @@ void simplex_method()
                             ad_matrix[i][j] = s_matrix[i][j] / s_matrix[perm_str][perm_col];
                         else
                             ad_matrix[i][j] = 1 / s_matrix[i][j];
+                        if (abs(ad_matrix[i][j]) <= pow(10, -12)) ad_matrix[i][j] = abs(ad_matrix[i][j]);
                     }
                 }
                 for (int i = 0; i < matrix_length; ++i)
@@ -169,7 +170,7 @@ void simplex_method()
                         else
                             ad_matrix[i][j] = 1 / s_matrix[i][j];
 
-                        if (ad_matrix[i][j] == 0) ad_matrix[i][j] = abs(ad_matrix[i][j]);
+                        if (abs(ad_matrix[i][j]) <= pow(10, -12)) ad_matrix[i][j] = abs(ad_matrix[i][j]);
                     }
                 }
                 for (int i = 0; i < matrix_length; ++i)
